@@ -23,11 +23,13 @@ pipeline {
 
        stage('Deploy to Kubernetes') {
            steps {
+               bat 'kubectl config use-context minikube'
                bat 'kubectl apply -f deployment.yaml'
                bat 'kubectl apply -f service.yaml'
            }
        }
    }
 }
+
 
 

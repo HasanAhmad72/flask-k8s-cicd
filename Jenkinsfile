@@ -14,18 +14,19 @@ pipeline {
                bat 'docker build -t flask-cicd-app:latest .'
            }
        }
-       
-stage('Load Image to Minikube') {
-    steps {
-        bat 'set "HOME=C:\\Users\\hasan" && minikube status'
-        bat 'set "HOME=C:\\Users\\hasan" && minikube image load flask-cicd-app:latest'
-    }
-}
+
+       stage('Load Image to Minikube') {
+           steps {
+               bat 'set "HOME=C:\\Users\\hasan" && minikube status'
+               bat 'set "HOME=C:\\Users\\hasan" && minikube image load flask-cicd-app:latest'
+           }
+       }
 
        stage('Deploy to Kubernetes') {
            steps {
-               bat 'kubectl apply -f deployment.yaml'
-               bat 'kubectl apply -f service.yaml'
+               bat 'set "HOME=C:\\Users\\hasan" && kubectl config use-context minikube'
+               bat 'set "HOME=C:\\Users\\hasan" && kubectl apply -f deployment.yaml --validate=false'
+               bat 'set "HOME=C:\\Users\\hasan" && kubectl apply -f service.yaml --validate=false'
            }
        }
 

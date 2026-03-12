@@ -3,12 +3,6 @@ pipeline {
 
    stages {
 
-     stage('Clone Code') {
-    steps {
-        git branch: 'main', url: 'https://github.com/HasanAhmad72/flask-k8s-cicd.git'
-    }
-}
-
        stage('Build Docker Image') {
            steps {
                bat 'docker build -t flask-cicd-app:latest .'
@@ -17,7 +11,7 @@ pipeline {
 
        stage('Load Image to Minikube') {
            steps {
-               bat 'minikube -p minikube image load flask-cicd-app:latest'
+               bat 'set MINIKUBE_HOME=C:\\Users\\hasan && minikube -p minikube image load flask-cicd-app:latest'
            }
        }
 
@@ -30,6 +24,3 @@ pipeline {
        }
    }
 }
-
-
-

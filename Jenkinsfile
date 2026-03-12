@@ -11,7 +11,7 @@ pipeline {
 
        stage('Load Image to Minikube') {
            steps {
-               bat 'set MINIKUBE_HOME=C:\\Users\\hasan && minikube -p minikube image load flask-cicd-app:latest'
+               bat 'set "MINIKUBE_HOME=C:\\Users\\hasan" && minikube -p minikube image load flask-cicd-app:latest'
            }
        }
 
@@ -24,3 +24,4 @@ pipeline {
        }
    }
 }
+

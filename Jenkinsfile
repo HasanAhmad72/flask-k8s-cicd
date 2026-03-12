@@ -17,7 +17,7 @@ pipeline {
 
        stage('Load Image to Minikube') {
            steps {
-               bat 'minikube image load flask-cicd-app:latest'
+               bat 'minikube -p minikube image load flask-cicd-app:latest'
            }
        }
 
@@ -29,4 +29,5 @@ pipeline {
        }
    }
 }
+
 

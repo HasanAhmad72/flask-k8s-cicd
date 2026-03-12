@@ -9,11 +9,12 @@ pipeline {
     }
 }
 
-       stage('Build Docker Image') {
-           steps {
-               bat 'docker build -t flask-cicd-app:latest .'
-           }
-       }
+    stage('Load Image to Minikube') {
+        steps {
+         bat 'minikube status'
+        bat 'minikube image load flask-cicd-app:latest'
+    }
+}
 
        stage('Load Image to Minikube') {
            steps {

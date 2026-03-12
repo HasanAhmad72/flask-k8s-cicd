@@ -14,13 +14,12 @@ pipeline {
                bat 'docker build -t flask-cicd-app:latest .'
            }
        }
-
-       stage('Load Image to Minikube') {
-           steps {
-               bat 'minikube status'
-               bat 'minikube image load flask-cicd-app:latest'
-           }
-       }
+stage('Load Image to Minikube') {
+    steps {
+        bat 'set HOME=C:\\Users\\hasan && minikube status'
+        bat 'set HOME=C:\\Users\\hasan && minikube image load flask-cicd-app:latest'
+    }
+}
 
        stage('Deploy to Kubernetes') {
            steps {

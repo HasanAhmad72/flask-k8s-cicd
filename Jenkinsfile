@@ -3,11 +3,11 @@ pipeline {
 
    stages {
 
-       stage('Clone Code') {
-           steps {
-               git 'https://github.com/HasanAhmad72/flask-k8s-cicd.git'
-           }
-       }
+     stage('Clone Code') {
+    steps {
+        git branch: 'main', url: 'https://github.com/HasanAhmad72/flask-k8s-cicd.git'
+    }
+}
 
        stage('Build Docker Image') {
            steps {
@@ -29,3 +29,4 @@ pipeline {
        }
    }
 }
+
